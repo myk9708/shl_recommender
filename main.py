@@ -90,7 +90,7 @@ def get_client():
 
 def call_agent(messages):
     system = PROMPT.replace("{catalog}", CATALOG_TEXT)
-    resp = get_client().messages.create(model="claude-sonnet-4-20250514", max_tokens=1024, system=system, messages=[{"role":m.role,"content":m.content} for m in messages])
+    resp = get_client().messages.create(model="claude-haiku-4-5-20251001", max_tokens=1024, system=system, messages=[{"role":m.role,"content":m.content} for m in messages])
     raw = resp.content[0].text.strip()
     raw = re.sub(r"^```(?:json)?\s*","",raw,flags=re.MULTILINE)
     raw = re.sub(r"\s*```\s*$","",raw,flags=re.MULTILINE).strip()
